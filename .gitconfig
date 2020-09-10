@@ -1,0 +1,22 @@
+[user]
+    	name = Aman Angira
+    	email = aman.angira@tech9.com
+[color]
+        diff = auto
+        status = auto
+        branch = auto
+        interactive = auto
+        ui = true
+        pager = true
+[alias]
+        bl=log --graph --pretty=format:'%Cred%h%Creset -%Cgreen(%cr) %C(yellow)%d%Creset %s  %C(bold blue)<%an>%Creset' --abbrev-commit
+        search-commits=log --all --grep=$2
+[http]
+	postBuffer = 524288000
+
+[checkout]
+    	defaultRemote=origin
+[core]
+	editor = vim
+[pull]
+	rebase = false
