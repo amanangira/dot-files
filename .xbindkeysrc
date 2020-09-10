@@ -1,0 +1,16 @@
+##Media Playback 
+
+#Play-pause
+"playerctl play-pause"
+    m:0x54 + c:46
+    Control+Mod2+Mod4 + l
+
+#Play-next
+"playerctl next"
+    m:0x54 + c:45
+    Control+Mod2+Mod4 + k
+
+#Play-previous
+"playerctl previous"
+    m:0x54 + c:44
+    Control+Mod2+Mod4 + j
