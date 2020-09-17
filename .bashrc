@@ -1,11 +1,11 @@
 # ~/.bashrc
 
 #TERMINAL CONFIGURATIONS
+export TERM=xterm
 export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ " #terminal theme
 export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
-export TERM=xterm-256color #TERMINAL TYPE
-#Powerline
+##Powerline
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export PATH=$PATH:$HOME/Library/Python/2.7/bin
@@ -15,7 +15,6 @@ POWERLINE_BASH_CONTINUATION=1
 POWERLINE_BASH_SELECT=1
 . /Users/amanangira/Library/Python/2.7/lib/python/site-packages/powerline/bindings/bash/powerline.sh
 
-alias cp="cp -i"                          # confirm before overwriting something
 alias df='df -h'                          # human-readable sizes
 alias free='free -m'                      # show sizes in MB
 alias np='nano -w PKGBUILD'
@@ -43,9 +42,10 @@ alias cd:docker="cd /usr/local/var/www/1800-docker-repos"
 alias cache:clear:dev="php -dmemory_limit=4G app/console cache:clear --env dev" 
 alias cache:clear:prod="php -dmemory_limit=4G app/console cache:clear --env prod"
 alias update:params="composer run-script symfony-scripts"
-alias api:dev:init="composer install && cp /usr/local/var/www/1800-docker-repos/api/web/app_dev.php /usr/local/var/www/1800-docker-repos/api/web/app.php && composer run-script symfony-scripts && echo 'Copied app_dev.php to app.php. Now, rebuilding the cache for dev.' && cache:clear:dev"
+alias api:dev:init="/usr/local/bin/composer/composer.phar install && cp /usr/local/var/www/1800-docker-repos/api/web/app_dev.php /usr/local/var/www/1800-docker-repos/api/web/app.php && /usr/local/bin/composer/composer.phar run-script symfony-scripts && echo 'Copied app_dev.php to app.php. Now, rebuilding the cache for dev.' && cache:clear:dev"
 alias docker:mongodb="docker exec -it mongodb mongo client_portal_t"
 alias docker:api="docker exec -it api bash"
+alias docker:postgresql="docker exec -it postgresql psql -U 1800_user client-portal"
 alias edocker='_edocker'
 alias restart:php='brew services restart php72'
 alias docker:restart='docker-compose down && docker-compose up -d'
