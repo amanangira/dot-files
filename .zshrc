@@ -76,6 +76,7 @@ CASE_SENSITIVE="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
+plugins=(zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -107,3 +108,133 @@ source $ZSH/oh-my-zsh.sh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+#1800 project variables
+source /usr/local/var/www/1800-docker-repos/ops/api_dev_env/include.sh 
+export PROJECT_DIR=/usr/local/var/www/1800-docker-repos #1800 project variables
+
+#ALIAS
+#alias php='/usr/bin/php72'
+alias la='ls -laFH' #Human readable list all
+alias rmq:start="rabbitmq-server -detached"
+alias rmq:stop="rabbitmqctl shutdown"
+alias rmq:status="rabbitmqctl status"
+alias cd:api="cd /usr/local/var/www/1800-docker-repos/api"
+alias cd:docker="cd /usr/local/var/www/1800-docker-repos"
+alias cache:clear:dev="php -dmemory_limit=4G app/console cache:clear --env dev" 
+alias cache:clear:prod="php -dmemory_limit=4G app/console cache:clear --env prod"
+alias update:params="composer run-script symfony-scripts"
+alias api:dev:init="/usr/local/bin/composer/composer.phar install && cp /usr/local/var/www/1800-docker-repos/api/web/app_dev.php /usr/local/var/www/1800-docker-repos/api/web/app.php && /usr/local/bin/composer/composer.phar run-script symfony-scripts && echo 'Copied app_dev.php to app.php. Now, rebuilding the cache for dev.' && cache:clear:dev"
+alias docker:mongodb="docker exec -it mongodb mongo client_portal_t"
+alias docker:api="docker exec -it api bash"
+alias docker:postgresql="docker exec -it postgresql psql -U 1800_user client-portal"
+alias edocker='_edocker'
+alias restart:php='brew services restart php72'
+alias docker:restart='docker-compose down && docker-compose up -d'
+alias run-on-all='run-on-all'
+alias start-brew-services='run-on-all "brew services start replace" "$BREW_SERVICES"'
+alias stop-brew-services='run-on-all "brew services stop replace" "$BREW_SERVICES"'
+alias ngrok="/Users/amanangira/Downloads/Workspaces/ngrok/ngrok"
+alias update:params="composer run-script symfony-scripts"
+alias git:checkout="gitEnhancedCheckout"
+alias phpspec:run="runPhpSpec"
+alias git:tag:push="gitTagAndPush"
+alias curl:portal:config="curl http://1800accountant/cbapi/app.php/config"
+alias load:dev:apps="loadDevApps"
+alias npm:build:dist="npm start -- --env"
+alias vim="nvim"
+alias vvim="vim"lias cd:go="cd $GOPATH/src"
+alias php="/usr/local/php5-7.1.31-20190811-210816/bin/php"
+
+#ALIAS SSH
+alias ssh:bi-etl='ssh aangira@3.80.9.251'
+alias ssh:uat='ssh aangira@3.229.176.89'
+alias ssh:uat='ssh -i ~/.ssh/1800accountant/ops.pem ubuntu@uat.1800accountant.com'
+alias ssh:qa1='ssh -i ~/.ssh/1800accountant/ops.pem ubuntu@qa1-a.1800accountant.com'
+alias ssh:qa2='ssh -i ~/.ssh/1800accountant/ops.pem ubuntu@qa2-a.1800accountant.com'
+alias brightness='xrandr --output HDMI1 --brightness $1'
+
+#FUNCTION
+function _edocker()
+{
+if [ -z "$1" ]; then
+        if [ -z "$2" ]; then
+            if [ -z "$3" ]; then
+                docker exec -it "$1 $2 $3";
+            else
+                echo "docker exec -it $1 $2";
+            fi
+        else
+            docker exec -it "$1";
+        fi
+    else
+        echo "At least one arguement required, none given.";
+    fi 
+}
+
+function run-on-all(){
+    for keyword in $2
+    do
+        #printf "$keyword\n"
+        command="${1/replace/$keyword}"
+        $command
+        #printf "$command\n"
+    done 
+}
+
+function gitEnhancedCheckout()
+{
+    #Find branch based on input string
+    BRANCH="$(git branch --format='%(refname:short)'|grep $1)"
+
+    #Ask for confirmation before checkout
+    read -p "Confirm checkout to branch $BRANCH (y/n)?" RESP
+    RESP="$(echo "$RESP" | tr '[:upper:]' '[:lower:]')"
+    if [ "$RESP" == "y" ]; then
+        #echo "git checkout $BRANCH"
+        $(git checkout $BRANCH)
+    fi
+}
+
+function runPhpSpec()
+{
+    #echo "php -dmemory_limit=5G bin/phpspec run $1"
+    $(php -dmemory_limit=4G bin/phpspec run $1)
+}
+
+function gitTagAndPush()
+{
+    utc=$(date -u +"%H%M")
+    date=$(date +%Y%m%d)
+    if [ $# -eq 0 ]
+        then
+            finalTag="$date$utc"
+        else
+            finalTag="$1_$date$utc"
+    fi
+
+    #Get current branch name
+    branch=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p') 
+    read -p "Confirm tagging and pushing of branch '$branch' with tag '$finalTag' (y/n)?" RESP
+    RESP="$(echo "$RESP" | tr '[:upper:]' '[:lower:]')"
+    if [ "$RESP" == "y" ]; then
+        #echo "git checkout $BRANCH"
+        $(git tag $finalTag)
+        $(git push origin $finalTag)
+        echo "$finalTag was pushed to remote."
+    fi
+
+}
+
+function loadDevApps()
+{
+    open -a "google chrome" "https://technine.atlassian.net/secure/Dashboard.jspa"
+    open -a "visual studio code" 
+    open -a "docker"
+    open -a "NoSQLBooster for MongoDB"
+    open -a "slack"
+}
+
+function parse_git_branch() {
+ git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+}

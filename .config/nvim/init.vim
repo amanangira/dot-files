@@ -1,6 +1,7 @@
 call plug#begin("~/.vim/plugged")
 	Plug 'dracula/vim'
 	Plug 'relastle/bluewery.vim'
+	Plug 'vim-airline/vim-airline' " command mode status bar 
 call plug#end()
 
 if (has("termguicolors"))
