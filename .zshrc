@@ -112,6 +112,8 @@ source $ZSH/oh-my-zsh.sh
 #1800 project variables
 source /usr/local/var/www/1800-docker-repos/ops/api_dev_env/include.sh 
 export PROJECT_DIR=/usr/local/var/www/1800-docker-repos #1800 project variables
+export GOPATH="$HOME/Playground/go"
+go env -w GOPATH=$GOPATH
 
 #ALIAS
 #alias php='/usr/bin/php72'
@@ -143,7 +145,8 @@ alias curl:portal:config="curl http://1800accountant/cbapi/app.php/config"
 alias load:dev:apps="loadDevApps"
 alias npm:build:dist="npm start -- --env"
 alias vim="nvim"
-alias vvim="vim"lias cd:go="cd $GOPATH/src"
+alias vvim="vim"
+alias cd:go="cd $GOPATH/src"
 alias php="/usr/local/php5-7.1.31-20190811-210816/bin/php"
 
 #ALIAS SSH
@@ -188,9 +191,9 @@ function gitEnhancedCheckout()
     BRANCH="$(git branch --format='%(refname:short)'|grep $1)"
 
     #Ask for confirmation before checkout
-    read -p "Confirm checkout to branch $BRANCH (y/n)?" RESP
+    vared -p "Confirm checkout to branch $BRANCH (y/n)?" -c RESP
     RESP="$(echo "$RESP" | tr '[:upper:]' '[:lower:]')"
-    if [ "$RESP" == "y" ]; then
+    if [ "$RESP" = "y" ]; then
         #echo "git checkout $BRANCH"
         $(git checkout $BRANCH)
     fi
@@ -215,9 +218,9 @@ function gitTagAndPush()
 
     #Get current branch name
     branch=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p') 
-    read -p "Confirm tagging and pushing of branch '$branch' with tag '$finalTag' (y/n)?" RESP
+    vared -p 'Confirm tagging and pushing of branch '$branch' with tag '$finalTag' (y/n)?' -c RESP
     RESP="$(echo "$RESP" | tr '[:upper:]' '[:lower:]')"
-    if [ "$RESP" == "y" ]; then
+    if [ "$RESP" = "y" ]; then
         #echo "git checkout $BRANCH"
         $(git tag $finalTag)
         $(git push origin $finalTag)
@@ -238,3 +241,12 @@ function loadDevApps()
 function parse_git_branch() {
  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Setting fd as the default source for fzf - respect gitignore
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+
+# To apply the command to CTRL-T as well
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
