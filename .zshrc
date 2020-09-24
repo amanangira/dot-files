@@ -157,6 +157,11 @@ alias ssh:qa1='ssh -i ~/.ssh/1800accountant/ops.pem ubuntu@qa1-a.1800accountant.
 alias ssh:qa2='ssh -i ~/.ssh/1800accountant/ops.pem ubuntu@qa2-a.1800accountant.com'
 alias brightness='xrandr --output HDMI1 --brightness $1'
 
+##ALIAS DEPLOYMENT - ansible
+alias deploy:uat='ansible-playbook -i inventory/uat --vault-password-file ~/.ssh/1800accountant/ansible-vault-password -t docker-app -t deploy -v uat.yml'
+alias deploy:qa1='ansible-playbook -i inventory/qa1-a --vault-password-file ~/.ssh/1800accountant/ansible-vault-password -t docker-app -t deploy -v qa.yml'
+alias deploy:qa2='ansible-playbook -i inventory/qa2-a --vault-password-file ~/.ssh/1800accountant/ansible-vault-password -t docker-app -t deploy -v qa.yml'
+
 #FUNCTION
 function _edocker()
 {
