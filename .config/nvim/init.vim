@@ -41,7 +41,6 @@ source ~/.vimrc
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " toggle nerdtree
 map <C-n> :NERDTreeToggle<CR>
 
@@ -63,4 +62,7 @@ nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+let g:gutentags_cache_dir="/Users/amanangira/.vim/tags"
+nmap <silent> <leader>m :History<CR>
 
