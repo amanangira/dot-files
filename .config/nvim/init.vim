@@ -25,6 +25,7 @@ call plug#begin("~/.vim/plugged")
     Plug 'honza/vim-snippets' 
     Plug 'tpope/vim-fugitive'
     Plug 'ludovicchabant/vim-gutentags'
+    Plug 'arnaud-lb/vim-php-namespace'
 call plug#end()
 
 if (has("termguicolors"))
@@ -66,3 +67,11 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:gutentags_cache_dir="/Users/amanangira/.vim/tags"
 nmap <silent> <leader>m :History<CR>
 
+
+" vim-php-namespaces
+function! IPhpInsertUse()
+    call PhpInsertUse()
+    call feedkeys('a',  'n')
+endfunction
+autocmd FileType php inoremap <Leader>u <Esc>:call IPhpInsertUse()<CR>
+autocmd FileType php noremap <Leader>u :call PhpInsertUse()<CR>
