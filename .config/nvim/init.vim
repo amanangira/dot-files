@@ -60,8 +60,8 @@ nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 
 " Toggle window tabs right and left respectively 
-nnoremap <C-h> gT <CR>
-nnoremap <C-l> gt <CR>
+" nnoremap <C-h> gT <CR>
+" nnoremap <C-l> gt <CR>
 
 " ultiSnips
 let g:UltiSnipsExpandTrigger="<tab>"

@@ -147,19 +147,10 @@ alias vim="nvim"
 alias vvim="vim"
 alias cd:go="cd $GOPATH/src"
 alias php="/usr/local/php5-7.1.31-20190811-210816/bin/php"
+alias myip='curl ifconfig.me'
 
-#ALIAS SSH
-alias ssh:bi-etl='ssh aangira@3.80.9.251'
-alias ssh:uat='ssh aangira@3.229.176.89'
-alias ssh:uat='ssh -i ~/.ssh/1800accountant/ops.pem ubuntu@uat.1800accountant.com'
-alias ssh:qa1='ssh -i ~/.ssh/1800accountant/ops.pem ubuntu@qa1-a.1800accountant.com'
-alias ssh:qa2='ssh -i ~/.ssh/1800accountant/ops.pem ubuntu@qa2-a.1800accountant.com'
-alias brightness='xrandr --output HDMI1 --brightness $1'
-
-##ALIAS DEPLOYMENT - ansible
-alias deploy:uat='ansible-playbook -i inventory/uat --vault-password-file ~/.ssh/1800accountant/ansible-vault-password -t docker-app -t deploy -v uat.yml'
-alias deploy:qa1='ansible-playbook -i inventory/qa1-a --vault-password-file ~/.ssh/1800accountant/ansible-vault-password -t docker-app -t deploy -v qa.yml'
-alias deploy:qa2='ansible-playbook -i inventory/qa2-a --vault-password-file ~/.ssh/1800accountant/ansible-vault-password -t docker-app -t deploy -v qa.yml'
+## Sensitive Aliases
+source /Users/amanangira/dot-files/sensitive.zsh
 
 #FUNCTION
 function _edocker()
