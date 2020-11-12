@@ -18,7 +18,6 @@
     	defaultRemote=origin
 [core]
 	editor = vim
+    pager  = less -F -X
 [pull]
 	rebase = false
-[pager]
-	branch = false
