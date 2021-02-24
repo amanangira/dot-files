@@ -120,9 +120,6 @@ alias la='ls -laFH' #Human readable list all
 alias rmq:start="rabbitmq-server -detached"
 alias rmq:stop="rabbitmqctl shutdown"
 alias rmq:status="rabbitmqctl status"
-alias cd:api="cd /usr/local/var/www/1800-docker-repos/api && pwd"
-alias cd:ops="cd /usr/local/var/www/1800-docker-repos/ops && pwd"
-alias cd:docker="cd /usr/local/var/www/1800-docker-repos"
 alias cache:clear:dev="php -dmemory_limit=4G app/console cache:clear --env dev" 
 alias cache:clear:prod="php -dmemory_limit=4G app/console cache:clear --env prod"
 alias update:params="composer run-script symfony-scripts"
@@ -146,9 +143,14 @@ alias load:dev:apps="loadDevApps"
 alias npm:build:dist="npm start -- --env"
 alias vim="nvim"
 alias vvim="vim"
-alias cd:go="cd $GOPATH/src"
 alias php="/usr/local/php5-7.1.31-20190811-210816/bin/php"
 alias myip='curl ifconfig.me'
+
+#CD Aliases
+alias cd:go="cd $GOPATH/src"
+alias cd:api="cd /usr/local/var/www/1800-docker-repos/api && pwd"
+alias cd:ops="cd /usr/local/var/www/1800-docker-repos/ops && pwd"
+alias cd:docker="cd /usr/local/var/www/1800-docker-repos"
 
 ## Sensitive Aliases
 source /Users/amanangira/dot-files/sensitive.zsh
