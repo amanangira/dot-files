@@ -109,11 +109,12 @@ source $ZSH/oh-my-zsh.sh
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 #1800 project variables
-source /usr/local/var/www/1800-docker-repos/ops/api_dev_env/include.sh 
-export PROJECT_DIR=/usr/local/var/www/1800-docker-repos #1800 project variables
+export PATH=/Users/amanangira/Library/Python/3.8/bin/:$PATH
+source /Users/amanangira/www/1800-docker-repos/ops/api_dev_env/include.sh 
+export PROJECT_DIR=/Users/amanangira/www/1800-docker-repos #1800 project variables
 #export GOPATH="$HOME/Playground/go"
-export GOPATH="/usr/local/var/www/playground/go"
-go env -w GOPATH=$GOPATH
+export GOPATH="/Users/amanangira/www/playground/go"
+#go env -w GOPATH=$GOPATH
 
 #ALIAS
 #alias php='/usr/bin/php72'
@@ -124,7 +125,7 @@ alias rmq:status="rabbitmqctl status"
 alias cache:clear:dev="php -dmemory_limit=4G app/console cache:clear --env dev" 
 alias cache:clear:prod="php -dmemory_limit=4G app/console cache:clear --env prod"
 alias update:params="composer run-script symfony-scripts"
-alias api:dev:init="cp /usr/local/var/www/1800-docker-repos/api/web/app_dev.php /usr/local/var/www/1800-docker-repos/api/web/app.php && /usr/local/bin/composer/composer.phar run-script symfony-scripts && echo 'Copied app_dev.php to app.php. Now, rebuilding the cache for dev.' && cache:clear:dev"
+alias api:dev:init="cp /Users/amanangira/www/1800-docker-repos/api/web/app_dev.php /Users/amanangira/www/1800-docker-repos/api/web/app.php && /usr/local/bin/composer/composer.phar run-script symfony-scripts && echo 'Copied app_dev.php to app.php. Now, rebuilding the cache for dev.' && cache:clear:dev"
 alias docker:mongodb="docker exec -it mongodb mongo client_portal_t"
 alias docker:api="docker exec -it api bash"
 alias docker:postgresql="docker exec -it postgresql psql -U 1800_user client-portal"
@@ -148,12 +149,12 @@ alias php="/usr/local/php5-7.1.31-20190811-210816/bin/php"
 alias myip='curl ifconfig.me'
 
 #CD Aliases
-alias cd:go="cd $GOPATH/src"
-alias cd:api="cd /usr/local/var/www/1800-docker-repos/api && pwd"
-alias cd:ops="cd /usr/local/var/www/1800-docker-repos/ops && pwd"
-alias cd:docker="cd /usr/local/var/www/1800-docker-repos"
-alias cd:react="cd /usr/local/var/www/reactnd-contacts-app"
-alias cd:node="cd /usr/local/var/www/reactnd-contacts-server2"
+#alias cd:go="cd $GOPATH/src"
+alias cd:api="cd /Users/amanangira/www/1800-docker-repos/api && pwd"
+alias cd:ops="cd /Users/amanangira/www/1800-docker-repos/ops && pwd"
+alias cd:docker="cd ƒ/1800-docker-repos"
+alias cd:react="cd /Users/amanangira/www/reactnd-contacts-app"
+alias cd:node="cd /Users/amanangira/www/reactnd-contacts-server2"
 
 ## Sensitive Aliases
 source /Users/amanangira/dot-files/sensitive.zsh
