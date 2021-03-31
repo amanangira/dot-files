@@ -111,7 +111,8 @@ source $ZSH/oh-my-zsh.sh
 #1800 project variables
 source /usr/local/var/www/1800-docker-repos/ops/api_dev_env/include.sh 
 export PROJECT_DIR=/usr/local/var/www/1800-docker-repos #1800 project variables
-export GOPATH="$HOME/Playground/go"
+#export GOPATH="$HOME/Playground/go"
+export GOPATH="/usr/local/var/www/playground/go"
 go env -w GOPATH=$GOPATH
 
 #ALIAS
@@ -151,6 +152,8 @@ alias cd:go="cd $GOPATH/src"
 alias cd:api="cd /usr/local/var/www/1800-docker-repos/api && pwd"
 alias cd:ops="cd /usr/local/var/www/1800-docker-repos/ops && pwd"
 alias cd:docker="cd /usr/local/var/www/1800-docker-repos"
+alias cd:react="cd /usr/local/var/www/reactnd-contacts-app"
+alias cd:node="cd /usr/local/var/www/reactnd-contacts-server2"
 
 ## Sensitive Aliases
 source /Users/amanangira/dot-files/sensitive.zsh
