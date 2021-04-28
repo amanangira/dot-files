@@ -125,7 +125,7 @@ alias rmq:status="rabbitmqctl status"
 alias cache:clear:dev="php -dmemory_limit=4G app/console cache:clear --env dev" 
 alias cache:clear:prod="php -dmemory_limit=4G app/console cache:clear --env prod"
 alias update:params="composer run-script symfony-scripts"
-alias api:dev:init="cp /Users/amanangira/www/1800-docker-repos/api/web/app_dev.php /Users/amanangira/www/1800-docker-repos/api/web/app.php && /usr/local/bin/composer/composer.phar run-script symfony-scripts && echo 'Copied app_dev.php to app.php. Now, rebuilding the cache for dev.' && cache:clear:dev"
+alias api:dev:init="cp /Users/amanangira/www/1800-docker-repos/api/web/app_dev.php /Users/amanangira/www/1800-docker-repos/api/web/app.php && composer.phar run-script symfony-scripts && echo 'Copied app_dev.php to app.php. Now, rebuilding the cache for dev.' && cache:clear:dev"
 alias docker:mongodb="docker exec -it mongodb mongo client_portal_t"
 alias docker:api="docker exec -it api bash"
 alias docker:postgresql="docker exec -it postgresql psql -U 1800_user client-portal"
@@ -145,17 +145,18 @@ alias load:dev:apps="loadDevApps"
 alias npm:build:dist="npm start -- --env"
 alias vim="nvim"
 alias vvim="vim"
-alias php="/usr/local/php5-7.1.31-20190811-210816/bin/php"
 alias myip='curl ifconfig.me'
 
 #CD Aliases
-#alias cd:go="cd $GOPATH/src"
+alias cd:go="cd $GOPATH/src"
 alias cd:api="cd /Users/amanangira/www/1800-docker-repos/api && pwd"
 alias cd:ops="cd /Users/amanangira/www/1800-docker-repos/ops && pwd"
 alias cd:docker="cd ƒ/1800-docker-repos"
 alias cd:react="cd /Users/amanangira/www/reactnd-contacts-app"
 alias cd:node="cd /Users/amanangira/www/reactnd-contacts-server2"
-
+alias cd:www="cd /Users/amanangira/www"
+alias cd:hb="cd /Users/amanangira/www/hewett-learning/packages/serverless"
+alias cd:hf="cd /Users/amanangira/www/hewett-learning/packages/apps/web"
 ## Sensitive Aliases
 source /Users/amanangira/dot-files/sensitive.zsh
 
