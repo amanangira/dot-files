@@ -108,10 +108,13 @@ source $ZSH/oh-my-zsh.sh
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+## Sensitive Aliases
+source /Users/amanangira/dot-files/sensitive.zsh
+
 #1800 project variables
 export PATH=/Users/amanangira/Library/Python/3.8/bin/:$PATH
 source /Users/amanangira/www/1800-docker-repos/ops/api_dev_env/include.sh 
-export PROJECT_DIR=/Users/amanangira/www/1800-docker-repos #1800 project variables
+export PROJECT_DIR=/Users/amanangira/www/1800-docker-repos 
 #export GOPATH="$HOME/Playground/go"
 export GOPATH="/Users/amanangira/www/playground/go"
 #go env -w GOPATH=$GOPATH
@@ -146,6 +149,9 @@ alias npm:build:dist="npm start -- --env"
 alias vim="nvim"
 alias vvim="vim"
 alias myip='curl ifconfig.me'
+alias kube:config:1800="ln -sf $DOT_FILES_PATH/secrets/.kube/1800-config  /Users/amanangira/.kube/config"
+alias kube:config:minikube="ln -sf $DOT_FILES_PATH/secrets/.kube/minikube-config  /Users/amanangira/.kube/config"
+
 
 #CD Aliases
 alias cd:go="cd $GOPATH/src"
@@ -157,8 +163,7 @@ alias cd:node="cd /Users/amanangira/www/reactnd-contacts-server2"
 alias cd:www="cd /Users/amanangira/www"
 alias cd:hb="cd /Users/amanangira/www/hewett-learning/packages/serverless"
 alias cd:hf="cd /Users/amanangira/www/hewett-learning/packages/apps/web"
-## Sensitive Aliases
-source /Users/amanangira/dot-files/sensitive.zsh
+alias cd:dot="cd $DOT_FILES_PATH"
 
 #FUNCTION
 function _edocker()
