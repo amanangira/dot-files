@@ -117,6 +117,8 @@ source /Users/amanangira/www/1800-docker-repos/ops/api_dev_env/include.sh
 export PROJECT_DIR=/Users/amanangira/www/1800-docker-repos 
 #export GOPATH="$HOME/Playground/go"
 export GOPATH="/Users/amanangira/www/playground/go"
+# See - https://docs.aws.amazon.com/sdk-for-go/api/aws/session/#NewSessionWithOptions
+export AWS_SDK_LOAD_CONFIG=true
 #go env -w GOPATH=$GOPATH
 
 #ALIAS
@@ -153,7 +155,7 @@ alias kube:config:1800="ln -sf $DOT_FILES_PATH/secrets/.kube/1800-config  /Users
 alias kube:config:minikube="ln -sf $DOT_FILES_PATH/secrets/.kube/minikube-config  /Users/amanangira/.kube/config"
 
 
-#CD Aliases
+#CD ALIASES
 alias cd:go="cd $GOPATH/src"
 alias cd:api="cd /Users/amanangira/www/1800-docker-repos/api && pwd"
 alias cd:ops="cd /Users/amanangira/www/1800-docker-repos/ops && pwd"
@@ -164,6 +166,11 @@ alias cd:www="cd /Users/amanangira/www"
 alias cd:hb="cd /Users/amanangira/www/hewett-learning/packages/serverless"
 alias cd:hf="cd /Users/amanangira/www/hewett-learning/packages/apps/web"
 alias cd:dot="cd $DOT_FILES_PATH"
+
+# AWS ALIASES
+## TODO - Move to a function and pull profiles from .aws/credentials
+alias aws:1800="export AWS_DEFAULT_PROFILE=1800_AMAN"
+alias aws:personal="export AWS_DEFAULT_PROFILE=personal"
 
 #FUNCTION
 function _edocker()
