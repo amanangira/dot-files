@@ -171,7 +171,7 @@ alias cd:dot="cd $DOT_FILES_PATH"
 ## TODO - Move to a function and pull profiles from .aws/credentials
 alias aws:1800="export AWS_DEFAULT_PROFILE=1800_AMAN"
 alias aws:personal="export AWS_DEFAULT_PROFILE=personal"
-
+alias aws:hewett="export AWS_DEFAULT_PROFILE=hewett"
 #FUNCTION
 function _edocker()
 {
