@@ -112,11 +112,11 @@ source $ZSH/oh-my-zsh.sh
 source /Users/amanangira/dot-files/sensitive.zsh
 
 #1800 project variables
-export PATH=/Users/amanangira/Library/Python/3.8/bin/:$PATH
 source /Users/amanangira/www/1800-docker-repos/ops/api_dev_env/include.sh 
 export PROJECT_DIR=/Users/amanangira/www/1800-docker-repos 
 #export GOPATH="$HOME/Playground/go"
 export GOPATH="/Users/amanangira/www/playground/go"
+export PATH=/Users/amanangira/Library/Python/3.8/bin/:$GOPATH/bin:$PATH
 # See - https://docs.aws.amazon.com/sdk-for-go/api/aws/session/#NewSessionWithOptions
 export AWS_SDK_LOAD_CONFIG=true
 #go env -w GOPATH=$GOPATH
@@ -160,9 +160,10 @@ alias cd:go="cd $GOPATH/src"
 alias cd:api="cd /Users/amanangira/www/1800-docker-repos/api && pwd"
 alias cd:ops="cd /Users/amanangira/www/1800-docker-repos/ops && pwd"
 alias cd:docker="cd ƒ/1800-docker-repos"
-alias cd:react="cd /Users/amanangira/www/playground/react"
-alias cd:node="cd /Users/amanangira/www/reactnd-contacts-server2"
+alias cd:react="cd /Users/amanangira/www/playground/react/app-contacts-react/"
+alias cd:node="cd /Users/amanangira/www/playground/react/backend-node"
 alias cd:www="cd /Users/amanangira/www"
+alias cd:hl="cd /Users/amanangira/www/hewett-learning"
 alias cd:hb="cd /Users/amanangira/www/hewett-learning/packages/serverless"
 alias cd:hf="cd /Users/amanangira/www/hewett-learning/packages/apps/web"
 alias cd:dot="cd $DOT_FILES_PATH"
@@ -265,3 +266,13 @@ export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 # To apply the command to CTRL-T as well
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
+# tabtab source for slss package
+# uninstall by removing these lines or running `tabtab uninstall slss`
+[[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh
