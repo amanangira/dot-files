@@ -116,7 +116,7 @@ source /Users/amanangira/www/1800-docker-repos/ops/api_dev_env/include.sh
 export PROJECT_DIR=/Users/amanangira/www/1800-docker-repos 
 #export GOPATH="$HOME/Playground/go"
 export GOPATH="/Users/amanangira/www/playground/go"
-export PATH=/Users/amanangira/Library/Python/3.8/bin/:$GOPATH/bin:$PATH
+export PATH=/Users/amanangira/Library/Python/3.8/bin/:$PATH
 # See - https://docs.aws.amazon.com/sdk-for-go/api/aws/session/#NewSessionWithOptions
 export AWS_SDK_LOAD_CONFIG=true
 #go env -w GOPATH=$GOPATH
@@ -153,13 +153,14 @@ alias vvim="vim"
 alias myip='curl ifconfig.me'
 alias kube:config:1800="ln -sf $DOT_FILES_PATH/secrets/.kube/1800-config  /Users/amanangira/.kube/config"
 alias kube:config:minikube="ln -sf $DOT_FILES_PATH/secrets/.kube/minikube-config  /Users/amanangira/.kube/config"
-
+alias mg="cd:hb && make generate"
+alias md="cd:hb && make dependency"
 
 #CD ALIASES
 alias cd:go="cd $GOPATH/src"
 alias cd:api="cd /Users/amanangira/www/1800-docker-repos/api && pwd"
 alias cd:ops="cd /Users/amanangira/www/1800-docker-repos/ops && pwd"
-alias cd:docker="cd ƒ/1800-docker-repos"
+alias cd:docker="cd /Users/amanangira/www/docker"
 alias cd:react="cd /Users/amanangira/www/playground/react/app-contacts-react/"
 alias cd:node="cd /Users/amanangira/www/playground/react/backend-node"
 alias cd:www="cd /Users/amanangira/www"
@@ -167,6 +168,8 @@ alias cd:hl="cd /Users/amanangira/www/hewett-learning"
 alias cd:hb="cd /Users/amanangira/www/hewett-learning/packages/serverless"
 alias cd:hf="cd /Users/amanangira/www/hewett-learning/packages/apps/web"
 alias cd:dot="cd $DOT_FILES_PATH"
+alias cd:tva="cd /Users/amanangira/www/laravel-tva/"
+alias cd:jt="cd /Users/amanangira/www/jobtotop/"
 
 # AWS ALIASES
 ## TODO - Move to a function and pull profiles from .aws/credentials
