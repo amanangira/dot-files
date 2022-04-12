@@ -19,6 +19,6 @@
 [core]
 	editor = vim
     pager  = less -F -X
-	excludesfile = /Users/amanangira/.gitignore_global
+	excludesfile = /Users/amanangira/.gitignore
 [pull]
 	rebase = false
