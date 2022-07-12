@@ -116,7 +116,7 @@ source /Users/amanangira/www/1800-docker-repos/ops/api_dev_env/include.sh
 export PROJECT_DIR=/Users/amanangira/www/1800-docker-repos 
 #export GOPATH="$HOME/Playground/go"
 export GOPATH="/Users/amanangira/www/playground/go"
-export PATH=/Users/amanangira/Library/Python/3.8/bin/:$PATH
+export PATH=/Users/amanangira/Library/Python/3.8/bin/:$GOPATH/bin:$PATH
 # See - https://docs.aws.amazon.com/sdk-for-go/api/aws/session/#NewSessionWithOptions
 export AWS_SDK_LOAD_CONFIG=true
 #go env -w GOPATH=$GOPATH
@@ -168,9 +168,8 @@ alias cd:hl="cd /Users/amanangira/www/hewett-learning"
 alias cd:hb="cd /Users/amanangira/www/hewett-learning/packages/serverless"
 alias cd:hf="cd /Users/amanangira/www/hewett-learning/packages/apps/web"
 alias cd:dot="cd $DOT_FILES_PATH"
-alias cd:tva="cd /Users/amanangira/www/laravel-tva/"
-alias cd:jt="cd /Users/amanangira/www/jobtotop/"
-
+alias cd:sm="cd /Users/amanangira/www/superman/"
+alias cd:gaa="cd /Users/amanangira/www/go-automatic-apps"
 # AWS ALIASES
 ## TODO - Move to a function and pull profiles from .aws/credentials
 alias aws:1800="export AWS_DEFAULT_PROFILE=1800_AMAN"
