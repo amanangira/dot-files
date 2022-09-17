@@ -168,7 +168,7 @@ alias cd:hl="cd /Users/amanangira/www/hewett-learning"
 alias cd:hb="cd /Users/amanangira/www/hewett-learning/packages/serverless"
 alias cd:hf="cd /Users/amanangira/www/hewett-learning/packages/apps/web"
 alias cd:dot="cd $DOT_FILES_PATH"
-alias cd:sm="cd /Users/amanangira/www/superman/"
+alias cd:cc="cd /Users/amanangira/www/contactcenter/"
 alias cd:gaa="cd /Users/amanangira/www/go-automatic-apps"
 # AWS ALIASES
 ## TODO - Move to a function and pull profiles from .aws/credentials
@@ -268,6 +268,11 @@ export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 
 # To apply the command to CTRL-T as well
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+# NVM Configuration - utility to manage multiple node versions
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 
 # tabtab source for serverless package
