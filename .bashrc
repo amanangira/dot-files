@@ -160,3 +160,5 @@ function parse_git_branch() {
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 if [ -f "/Users/amanangira/.config/fabric/fabric-bootstrap.inc" ]; then . "/Users/amanangira/.config/fabric/fabric-bootstrap.inc"; fi
+[[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
+eval "$(atuin init bash)"

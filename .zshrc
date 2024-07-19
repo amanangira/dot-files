@@ -286,3 +286,7 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 # Created by `pipx` on 2024-06-25 07:56:17
 export PATH="$PATH:/Users/amanangira/.local/bin"
 if [ -f "/Users/amanangira/.config/fabric/fabric-bootstrap.inc" ]; then . "/Users/amanangira/.config/fabric/fabric-bootstrap.inc"; fi
+
+. "$HOME/.atuin/bin/env"
+
+eval "$(atuin init zsh)"
