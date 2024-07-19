@@ -170,7 +170,6 @@ alias cd:hf="cd /Users/amanangira/www/hewett-learning/packages/apps/web"
 alias cd:dot="cd $DOT_FILES_PATH"
 alias cd:cc="cd /Users/amanangira/www/contactcenter/"
 alias cd:gaa="cd /Users/amanangira/www/go-automatic-apps"
-# AWS ALIASES
 ## TODO - Move to a function and pull profiles from .aws/credentials
 alias aws:personal="export AWS_DEFAULT_PROFILE=personal"
 alias aws:hewett="export AWS_DEFAULT_PROFILE=hewett"
@@ -283,3 +282,7 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 # # tabtab source for slss package
 # # uninstall by removing these lines or running `tabtab uninstall slss`
 # [[ ! -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh
+
+# Created by `pipx` on 2024-06-25 07:56:17
+export PATH="$PATH:/Users/amanangira/.local/bin"
+if [ -f "/Users/amanangira/.config/fabric/fabric-bootstrap.inc" ]; then . "/Users/amanangira/.config/fabric/fabric-bootstrap.inc"; fi

@@ -20,5 +20,6 @@
 	editor = vim
     pager  = less -F -X
 	excludesfile = /Users/amanangira/.gitignore
+	autocrlf = input
 [pull]
 	rebase = false
