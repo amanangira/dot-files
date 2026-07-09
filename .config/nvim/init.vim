@@ -21,11 +21,11 @@ call plug#begin("~/.vim/plugged")
 	" If installed using Homebrew
 	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 	Plug 'junegunn/fzf.vim'
-    Plug 'SirVer/ultisnips'
+    "Plug 'SirVer/ultisnips'
     Plug 'honza/vim-snippets' 
     Plug 'tpope/vim-fugitive'
     " Plug 'ludovicchabant/vim-gutentags'
-    Plug 'arnaud-lb/vim-php-namespace'
+    "Plug 'arnaud-lb/vim-php-namespace'
 call plug#end()
 
 if (has("termguicolors"))
