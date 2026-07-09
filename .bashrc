@@ -15,6 +15,7 @@ POWERLINE_BASH_CONTINUATION=1
 POWERLINE_BASH_SELECT=1
 . /Users/amanangira/Library/Python/2.7/lib/python/site-packages/powerline/bindings/bash/powerline.sh
 
+
 alias df='df -h'                          # human-readable sizes
 alias free='free -m'                      # show sizes in MB
 alias np='nano -w PKGBUILD'
@@ -162,3 +163,6 @@ function parse_git_branch() {
 if [ -f "/Users/amanangira/.config/fabric/fabric-bootstrap.inc" ]; then . "/Users/amanangira/.config/fabric/fabric-bootstrap.inc"; fi
 [[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
 eval "$(atuin init bash)"
+
+# Vite+ bin (https://viteplus.dev)
+. "$HOME/.vite-plus/env"

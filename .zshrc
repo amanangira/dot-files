@@ -111,86 +111,52 @@ source $ZSH/oh-my-zsh.sh
 ## Sensitive Aliases
 source /Users/amanangira/dot-files/sensitive.zsh
 
+## Source all files in alpabetical order
+for file in ~/dot-files/functions/*.zsh(N); do
+  source "$file"
+done
+
 #1800 project variables
-source /Users/amanangira/www/1800-docker-repos/ops/api_dev_env/include.sh 
-export PROJECT_DIR=/Users/amanangira/www/1800-docker-repos 
 #export GOPATH="$HOME/Playground/go"
-export GOPATH="/Users/amanangira/www/playground/go"
 export PATH=/Users/amanangira/Library/Python/3.8/bin/:$GOPATH/bin:$PATH
 # See - https://docs.aws.amazon.com/sdk-for-go/api/aws/session/#NewSessionWithOptions
 export AWS_SDK_LOAD_CONFIG=true
-#go env -w GOPATH=$GOPATH
+go env -w GOPATH="$HOME/go"
 
 #ALIAS
 #alias php='/usr/bin/php72'
 alias la='ls -laFH' #Human readable list all
-alias rmq:start="rabbitmq-server -detached"
-alias rmq:stop="rabbitmqctl shutdown"
-alias rmq:status="rabbitmqctl status"
-alias cache:clear:dev="php -dmemory_limit=4G app/console cache:clear --env dev" 
-alias cache:clear:prod="php -dmemory_limit=4G app/console cache:clear --env prod"
-alias update:params="composer run-script symfony-scripts"
-alias api:dev:init="cp /Users/amanangira/www/1800-docker-repos/api/web/app_dev.php /Users/amanangira/www/1800-docker-repos/api/web/app.php && composer.phar run-script symfony-scripts && echo 'Copied app_dev.php to app.php. Now, rebuilding the cache for dev.' && cache:clear:dev"
-alias docker:mongodb="docker exec -it mongodb mongo client_portal_t"
-alias docker:api="docker exec -it api bash"
-alias docker:postgresql="docker exec -it postgresql psql -U 1800_user client-portal"
-alias edocker='_edocker'
-alias restart:php='brew services restart php72'
 alias docker:restart='docker-compose down && docker-compose up -d'
 alias run-on-all='run-on-all'
 alias start-brew-services='run-on-all "brew services start replace" "$BREW_SERVICES"'
 alias stop-brew-services='run-on-all "brew services stop replace" "$BREW_SERVICES"'
-alias ngrok="/Users/amanangira/Downloads/Workspaces/ngrok/ngrok"
-alias update:params="composer run-script symfony-scripts"
 alias git:checkout="gitEnhancedCheckout"
-alias phpspec:run="runPhpSpec"
-alias git:tag:push="gitTagAndPush"
-alias curl:portal:config="curl http://1800accountant/cbapi/app.php/config"
-alias load:dev:apps="loadDevApps"
-alias npm:build:dist="npm start -- --env"
 alias vim="nvim"
 alias vvim="vim"
-alias myip='curl ifconfig.me'
+#alias myip='curl ifconfig.me'
+alias myip='curl -4 icanhazip.com'
 alias kube:config:1800="ln -sf $DOT_FILES_PATH/secrets/.kube/1800-config  /Users/amanangira/.kube/config"
 alias kube:config:minikube="ln -sf $DOT_FILES_PATH/secrets/.kube/minikube-config  /Users/amanangira/.kube/config"
 alias mg="cd:hb && make generate"
 alias md="cd:hb && make dependency"
+alias awslocal="aws --endpoint-url=http://localhost:4566 --region eu-central-1"
+#Project ALIASES
+#alias vrestore ="cp /Users/amanangira/www/vPlaybookJsons/appsettings.Local.json.api /Users/amanangira/www/vPlaybook/vPlaybook.Api/appsettings.Local.json"
 
 #CD ALIASES
 alias cd:go="cd $GOPATH/src"
-alias cd:api="cd /Users/amanangira/www/1800-docker-repos/api && pwd"
-alias cd:ops="cd /Users/amanangira/www/1800-docker-repos/ops && pwd"
-alias cd:docker="cd /Users/amanangira/www/docker"
-alias cd:react="cd /Users/amanangira/www/playground/react/reactnd-chirper-app"
-alias cd:node="cd /Users/amanangira/www/playground/react/backend-node"
 alias cd:www="cd /Users/amanangira/www"
-alias cd:hl="cd /Users/amanangira/www/hewett-learning"
-alias cd:hb="cd /Users/amanangira/www/hewett-learning/packages/serverless"
-alias cd:hf="cd /Users/amanangira/www/hewett-learning/packages/apps/web"
 alias cd:dot="cd $DOT_FILES_PATH"
-alias cd:cc="cd /Users/amanangira/www/contactcenter/"
-alias cd:gaa="cd /Users/amanangira/www/go-automatic-apps"
+alias cd:forge="cd /Users/amanangira/www/forge"
+alias cd:sf="cd /Users/amanangira/www/forge/salesforge-api"
+alias cd:mc="cd /Users/amanangira/www/forge/multichannel-api"
+alias cd:fe="cd /Users/amanangira/www/forge/frontend-forge"
 ## TODO - Move to a function and pull profiles from .aws/credentials
 alias aws:personal="export AWS_DEFAULT_PROFILE=personal"
-alias aws:hewett="export AWS_DEFAULT_PROFILE=hewett"
-alias aws:codeo="export AWS_DEFAULT_PROFILE=codeo"
+alias redis:prod-sf="redis-cli -h salesforge-api-redis-prod.kcurhx.clustercfg.euc1.cache.amazonaws.com -p 6379"
+alias redis:dev-mc="redis-cli -h clustercfg.multichannel-api-redis-dev.fd6mqf.euc1.cache.amazonaws.com -p 6379"
+alias redis:dev-sf="redis-cli -h salesforge-api-redis-dev.fd6mqf.clustercfg.euc1.cache.amazonaws.com -p 6379"
 #FUNCTION
-function _edocker()
-{
-if [ -z "$1" ]; then
-        if [ -z "$2" ]; then
-            if [ -z "$3" ]; then
-                docker exec -it "$1 $2 $3";
-            else
-                echo "docker exec -it $1 $2";
-            fi
-        else
-            docker exec -it "$1";
-        fi
-    else
-        echo "At least one arguement required, none given.";
-    fi 
-}
 
 function run-on-all(){
     for keyword in $2
@@ -214,45 +180,6 @@ function gitEnhancedCheckout()
         #echo "git checkout $BRANCH"
         $(git checkout $BRANCH)
     fi
-}
-
-function runPhpSpec()
-{
-    #echo "php -dmemory_limit=5G bin/phpspec run $1"
-    $(php -dmemory_limit=4G bin/phpspec run $1)
-}
-
-function gitTagAndPush()
-{
-    utc=$(date -u +"%H%M")
-    date=$(date +%Y%m%d)
-    if [ $# -eq 0 ]
-        then
-            finalTag="$date$utc"
-        else
-            finalTag="$1_$date$utc"
-    fi
-
-    #Get current branch name
-    branch=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p') 
-    vared -p 'Confirm tagging and pushing of branch '$branch' with tag '$finalTag' (y/n)?' -c RESP
-    RESP="$(echo "$RESP" | tr '[:upper:]' '[:lower:]')"
-    if [ "$RESP" = "y" ]; then
-        #echo "git checkout $BRANCH"
-        $(git tag $finalTag)
-        $(git push origin $finalTag)
-        echo "$finalTag was pushed to remote."
-    fi
-
-}
-
-function loadDevApps()
-{
-    open -a "google chrome" "https://technine.atlassian.net/secure/Dashboard.jspa"
-    open -a "visual studio code" 
-    open -a "docker"
-    open -a "NoSQLBooster for MongoDB"
-    open -a "slack"
 }
 
 function parse_git_branch() {
@@ -290,3 +217,29 @@ if [ -f "/Users/amanangira/.config/fabric/fabric-bootstrap.inc" ]; then . "/User
 . "$HOME/.atuin/bin/env"
 
 eval "$(atuin init zsh)"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+export PATH="/opt/homebrew/bin:$PATH"
+export PATH="/opt/homebrew/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/bin/ngrok:$PATH"
+export PATH="$(go env GOPATH)/bin:$PATH"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/opt/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/opt/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/opt/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+
+# Vite+ bin (https://viteplus.dev)
+. "$HOME/.vite-plus/env"
